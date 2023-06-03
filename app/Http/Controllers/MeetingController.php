@@ -4,9 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\MeetingRequest;
+use App\Repositories\Interfaces\MeetingRepositoryInterface;
 
 class MeetingController extends Controller
 {
+    protected $userRepository;
+
+    public function __construct(MeetingRepositoryInterface $meetingRepository)
+    {
+        $this->meetingRepository = $meetingRepository;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -28,9 +37,10 @@ class MeetingController extends Controller
      * Store a newly created resource in storage.
      */
      
-     public function store(Request $request)
+     public function store(MeetingRequest $request)
      {
-        //
+        $this->meetingRepository->create($request);
+        return redirect('/meetings')->with('message', 'User created successfully');
      }
 
     /**

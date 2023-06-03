@@ -18,4 +18,18 @@ class Meeting extends Model
         'start_date_time',
         'end_date_time'
     ];
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'creator_id');
+    }
+
+    public function attendee1()
+    {
+        return $this->belongsTo(User::class, 'attendee1_id');
+    }
+
+    public function attendee2()
+    {
+        return $this->belongsTo(User::class, 'attendee2_id');
+    }
 }

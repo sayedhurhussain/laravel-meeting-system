@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use App\Repositories\MeetingRepository;
 use App\Repositories\RegisterRepository;
+use App\Repositories\Interfaces\MeetingRepositoryInterface;
 use App\Repositories\Interfaces\RegisterRepositoryInterface;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -28,6 +30,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             RegisterRepositoryInterface::class,
             RegisterRepository::class
+        );
+
+        $this->app->bind(
+            MeetingRepositoryInterface::class,
+            MeetingRepository::class
         );
     }
 }
