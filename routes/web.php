@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
         Route::get('/', 'index')->name('meetings.index');
         Route::get('/create', 'create')->name('meetings.create');
         Route::post('/', 'store')->name('meetings.store');
+        Route::get('/show/{id}', 'show')->name('meetings.show');
         Route::get('/edit/{id}', 'edit')->name('meetings.edit');
     });
 });

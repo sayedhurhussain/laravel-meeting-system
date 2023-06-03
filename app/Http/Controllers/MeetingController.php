@@ -49,7 +49,7 @@ class MeetingController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return $this->meetingRepository->create($request);
     }
 
     /**
