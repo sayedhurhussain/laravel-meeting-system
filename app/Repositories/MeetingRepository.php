@@ -80,4 +80,9 @@ class MeetingRepository implements MeetingRepositoryInterface
         return $user;
     }
 
+    public function find($id)
+    {
+        $meeting = Meeting::with('attendee1', 'attendee2', 'creator')->findOrFail($id);
+        return $meeting;
+    }
 }

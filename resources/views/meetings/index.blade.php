@@ -24,6 +24,7 @@
                                 <th>Creator</th>
                                 <th>Attendee 1</th>
                                 <th>Attendee 2</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,6 +37,9 @@
                                     <td>{{ $meeting->creator->email }}</td>
                                     <td>{{ $meeting->attendee1->email }}</td>
                                     <td>{{ $meeting->attendee2->email }}</td>
+                                    <td>
+                                        <a href="{{ route('meetings.edit', $meeting->id) }}" class="btn btn-warning">Edit</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

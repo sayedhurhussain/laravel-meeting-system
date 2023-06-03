@@ -8,4 +8,5 @@ interface MeetingRepositoryInterface
 {
     public function all();
     public function create(Request $request);
+    public function find($id);
 }

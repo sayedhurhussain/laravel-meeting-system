@@ -57,7 +57,8 @@ class MeetingController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $meeting = $this->meetingRepository->find($id);
+        return view('meetings.edit', ['meeting' => $meeting]);
     }
 
     /**
