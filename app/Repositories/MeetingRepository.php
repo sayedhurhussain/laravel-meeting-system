@@ -16,6 +16,15 @@ use App\Repositories\Interfaces\MeetingRepositoryInterface;
 
 class MeetingRepository implements MeetingRepositoryInterface
 {
+    public function all()
+    {
+        $meetings = Meeting::where('creator_id', auth()->id())
+        ->with('attendee1', 'attendee2', 'creator')
+        ->paginate(10);
+    
+        return $meetings;    
+    }
+
     public function create(Request $request)
     {
         $client = new Google_Client();

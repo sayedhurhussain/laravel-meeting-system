@@ -21,7 +21,8 @@ class MeetingController extends Controller
      */
     public function index()
     {
-        //
+        $meetings = $this->meetingRepository->all();
+        return view('meetings.index', ['meetings' => $meetings]);
 
     }
 

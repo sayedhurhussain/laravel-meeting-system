@@ -28,6 +28,7 @@ Route::post('/login/authenticate', [LoginController::class, 'authenticate'])->na
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::controller(MeetingController::class)->prefix('meetings')->group(function () {
+        Route::get('/', 'index')->name('meetings.index');
         Route::get('/create', 'create')->name('meetings.create');
         Route::post('/', 'store')->name('meetings.store');
     });
