@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->dateTime('start_date_time');
             $table->dateTime('end_date_time');
+            $table->string('event_id');
             $table->unsignedBigInteger('creator_id');
             $table->unsignedBigInteger('attendee1_id');
             $table->unsignedBigInteger('attendee2_id');

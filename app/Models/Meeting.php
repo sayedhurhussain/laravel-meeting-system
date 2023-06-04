@@ -14,6 +14,7 @@ class Meeting extends Model
         'description',
         'attendee1_id',
         'attendee2_id',
+        'event_id',
         'creator_id',
         'start_date_time',
         'end_date_time'
