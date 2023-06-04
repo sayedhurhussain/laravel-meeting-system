@@ -34,5 +34,6 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
         Route::get('/show/{id}', 'show')->name('meetings.show');
         Route::get('/edit/{id}', 'edit')->name('meetings.edit');
         Route::post('/update/{id}', 'update')->name('meetings.update');
+        Route::delete('/destroy/{id}', 'destroy')->name('meetings.destroy');
     });
 });

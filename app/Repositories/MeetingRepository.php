@@ -137,4 +137,32 @@ class MeetingRepository implements MeetingRepositoryInterface
 
         return $meeting;
     }
+
+    public function delete($id)
+    {
+        $meeting = Meeting::findOrFail($id);
+        
+        // Get the event ID
+        $eventId = $meeting->event_id;
+        
+        // Delete the event from Google Calendar
+        $client = new Google_Client();
+        $client->setAuthConfig(base_path('app/Credentials/meeting-system.json'));
+        $client->setScopes(Google_Service_Calendar::CALENDAR_EVENTS);
+        
+        $service = new Google_Service_Calendar($client);
+        $calendarId = '38f5b1e422008d8cffb24cf68350f8a356cf3809763d04daacb2267e938fe586@group.calendar.google.com';
+        
+        $service->events->delete($calendarId, $eventId);
+        $meeting->delete();
+
+         // Remove the attendee relationship
+        $attendee1 = User::findOrFail($meeting->attendee1_id);
+        $attendee1->delete();
+
+        $attendee2 = User::findOrFail($meeting->attendee2_id);
+        $attendee2->delete();
+
+        return null; 
+    }
 }

@@ -88,6 +88,8 @@ class MeetingController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->meetingRepository->delete($id);
+
+        return redirect('/meetings')->with('message', 'Meeting deleted successfully');
     }
 }

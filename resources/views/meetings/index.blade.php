@@ -39,6 +39,11 @@
                                     <td>{{ $meeting->attendee2->email }}</td>
                                     <td>
                                         <a href="{{ route('meetings.edit', $meeting->id) }}" class="btn btn-warning">Edit</a>
+                                        <form action="{{ route('meetings.destroy', $meeting->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
