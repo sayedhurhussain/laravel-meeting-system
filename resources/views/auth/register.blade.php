@@ -1,4 +1,6 @@
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<!-- resources/views/auth/register.blade.php -->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 @extends('layouts.app')
 

@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 @extends('layouts.app')
 
@@ -10,7 +10,7 @@
         <div class="card card-default">
             <div class="card-header">
                 <h1>Meeting List</h1>
-                <a class="btn btn-primary btn-rounded btn-md" href="{{ url('/meetings/create') }}">Create Meeting</a>
+                <a class="btn btn-primary btn-rounded btn-md float-right" href="{{ url('/meetings/create') }}">Create Meeting</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
