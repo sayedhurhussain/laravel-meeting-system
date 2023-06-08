@@ -47,10 +47,9 @@ class MeetingRepository implements MeetingRepositoryInterface
                 'timeZone' => 'Asia/Karachi',
             ],
         ]);
-    
-        $calendarId = '38f5b1e422008d8cffb24cf68350f8a356cf3809763d04daacb2267e938fe586@group.calendar.google.com';
-    
+        $calendarId = env('CALENDAR_ID');
         $event = $service->events->insert($calendarId, $event);
+
     
         // Store the meeting event in the database
         $meeting = new Meeting([
@@ -96,7 +95,7 @@ class MeetingRepository implements MeetingRepositoryInterface
         $client->setScopes(Google_Service_Calendar::CALENDAR_EVENTS);
     
         $service = new Google_Service_Calendar($client);
-        $calendarId = '38f5b1e422008d8cffb24cf68350f8a356cf3809763d04daacb2267e938fe586@group.calendar.google.com';
+        $calendarId = env('CALENDAR_ID');
         //show all events
         // $events = $service->events->listEvents($calendarId);
         $meeting = Meeting::find($id);
@@ -151,7 +150,7 @@ class MeetingRepository implements MeetingRepositoryInterface
         $client->setScopes(Google_Service_Calendar::CALENDAR_EVENTS);
         
         $service = new Google_Service_Calendar($client);
-        $calendarId = '38f5b1e422008d8cffb24cf68350f8a356cf3809763d04daacb2267e938fe586@group.calendar.google.com';
+        $calendarId = env('CALENDAR_ID');
         
         $service->events->delete($calendarId, $eventId);
         $meeting->delete();
